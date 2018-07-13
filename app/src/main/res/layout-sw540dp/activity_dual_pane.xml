@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="horizontal"
+    >
+
+    <!--
+    This is the two-pane Layout for the ActivityStart_Race and Activity_StartSequence.
+    -->
+    <FrameLayout
+        android:id="@+id/fragment_numerical_display_container"
+        android:layout_width="0dp"
+        android:layout_weight="0.40"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout="@layout/fragment_race_info_numeric_windex"
+        >
+    </FrameLayout>
+    <View
+        android:layout_width="1dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_height="match_parent"
+        android:background="@color/GRAY"
+    />
+    <FrameLayout
+        android:id="@+id/fragment_map_display_container"
+        android:layout_width="0dp"
+        android:layout_weight="0.60"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout="@layout/fragment_google_map"
+        >
+    </FrameLayout>
+
+</LinearLayout>

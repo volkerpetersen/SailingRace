@@ -1,0 +1,356 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="0dp"
+        android:gravity="center_horizontal" >
+        <TextView
+            style="@style/TextAppearance.AppCompat.Title"
+            android:text="@string/minutes"
+            android:textStyle="bold"
+            android:textColor="@color/RED"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="30dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" />
+        <TextView
+            style="@style/TextAppearance.AppCompat.Title"
+            android:text="@string/seconds"
+            android:textStyle="bold"
+            android:textColor="@color/RED"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="30dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" />
+        <TextView
+            style="@style/TextAppearance.AppCompat.Title"
+            android:text="@string/className"
+            android:textStyle="bold"
+            android:textColor="@color/RED"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="125dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal" >
+
+        <com.kaiserware.sailingrace.NumberPicker
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="30dp"
+            android:id="@+id/numberPickerMinutes"
+            android:gravity="right" />
+
+        <com.kaiserware.sailingrace.NumberPicker
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="30dp"
+            android:id="@+id/numberPickerSeconds"
+            android:gravity="right" />
+
+        <com.kaiserware.sailingrace.NumberPicker
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/numberPickerClass"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <View android:background="@color/GRAY"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="1dp"
+        android:layout_width = "fill_parent"
+        android:layout_height="2dip"
+        android:layout_centerVertical ="true"
+        android:layout_alignParentTop="true"
+        >
+    </View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:id="@+id/classSequence"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/RED"
+            android:text="Your Class"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:id="@+id/countdownString"
+            android:layout_margin="0dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="@color/WHITE"
+            android:text="0:00"
+            android:textSize="100dp"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+            <Button
+                style="@style/TextAppearance.AppCompat.Display1"
+                android:id="@+id/countdownPlus"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="0dp"
+                android:text="+"
+                android:textStyle="bold"
+                android:textColor="@color/WHITE"
+                android:backgroundTint="@color/RED"
+                android:gravity="center_horizontal"
+                />
+            <Button
+                style="@style/TextAppearance.AppCompat.Display1"
+                android:id="@+id/countdownMinus"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginBottom="0dp"
+                android:text="-"
+                android:textStyle="bold"
+                android:textColor="@color/WHITE"
+                android:backgroundTint="@color/RED"
+                android:gravity="center_horizontal"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|bottom" >
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/WHITE"
+                android:text="TWD:"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:gravity="start" />
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/TWD"
+                android:textColor="@color/WHITE"
+                android:text="@string/blank_entry"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_gravity="end"
+                android:gravity="end" />
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/WHITE"
+                android:text="TWS:"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="fill_parent"
+                android:gravity="end" />
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/TWS"
+                android:textColor="@color/WHITE"
+                android:text="@string/blank_entry"
+                android:layout_width="55dp"
+                android:layout_marginEnd="10dp"
+                android:layout_height="fill_parent"
+                android:gravity="end" />
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/favoredString"
+                android:textColor="@color/GREEN"
+                android:text="Com.:"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="fill_parent"
+                android:gravity="end" />
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/favoredDegrees"
+                android:textColor="@color/WHITE"
+                android:text="@string/blank_entry"
+                android:layout_width="55dp"
+                android:layout_height="fill_parent"
+                android:gravity="end" />
+        </LinearLayout>
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="start" >
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/WHITE"
+                android:text="TTL (C/P/I):"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:gravity="start" />
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/TTLcommittee"
+                android:textColor="@color/WHITE"
+                android:text="@string/blank_entry"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_gravity="end"
+                android:gravity="end" />
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/TTLpin"
+                android:textColor="@color/WHITE"
+                android:text="@string/blank_entry"
+                android:layout_width="80dp"
+                android:layout_height="fill_parent"
+                android:gravity="end" />
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/TTLintersect"
+                android:textColor="@color/WHITE"
+                android:text="@string/blank_entry"
+                android:layout_width="80dp"
+                android:layout_height="fill_parent"
+                android:gravity="end" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        android:gravity="bottom"
+        android:layout_marginBottom="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="0dp"
+                android:layout_gravity="center_horizontal|center_vertical"
+                >
+                <Button
+                    android:id="@+id/button_set_WL_Course"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="W/L Set"
+                    android:clickable="true"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:gravity="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/WHITE"
+                    >
+                </Button>
+                <Button
+                    android:id="@+id/button_setWindwardAuto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1 nm Auto"
+                    android:clickable="true"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:gravity="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/WHITE"
+                    >
+                </Button>
+            </LinearLayout>
+            <Button
+                android:id="@+id/button_countdownStart"
+                style="@style/TextAppearance.AppCompat.Display1"
+                android:layout_width="135dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/button_countdown"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:clickable="true"
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:textColor="@color/WHITE"
+                >
+            </Button>
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="0dp"
+                android:layout_gravity="center_horizontal|center_vertical"
+                >
+                <Button
+                    android:id="@+id/button_setLeeward"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:text="LWD Set"
+                    android:clickable="true"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:gravity="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/WHITE"
+                    >
+                </Button>
+                <Button
+                    android:id="@+id/button_setLeewardPin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:text="PIN Set"
+                    android:clickable="true"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:gravity="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/WHITE"
+                    >
+                </Button>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

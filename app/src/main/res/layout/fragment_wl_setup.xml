@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:layout_marginEnd="10dp"
+              android:layout_marginStart="10dp"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/row0"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="W/L Course Setup"
+            android:textColor="@color/RED"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/row1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="current TWD:"
+            android:textColor="@color/GRAY"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/TWD"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:gravity="right"
+            android:text="xxx1"
+            android:textColor="@color/GRAY"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/row2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="5dp"
+        android:gravity="left"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="Start Line:"
+            android:textColor="@color/GRAY"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/StartLine"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:gravity="right"
+            android:text="xxx2"
+            android:textColor="@color/GRAY"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/row3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:text="Course Bearing:"
+            android:textColor="@color/WHITE"
+            android:textStyle="bold"
+            />
+
+        <EditText
+            android:id="@+id/CourseBearing"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="xxx3"
+            android:textColor="@color/WHITE"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:gravity="end"
+            android:text="\u00B0"
+            android:textColor="@color/WHITE"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/row4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="0dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="0dp"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:text="Course Length:"
+            android:textColor="@color/WHITE"
+            android:textStyle="bold"
+            />
+
+        <EditText
+            android:id="@+id/CourseLength"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="xxx4"
+            android:textColor="@color/WHITE"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:gravity="end"
+            android:text="nm"
+            android:textColor="@color/WHITE"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/row6"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="0dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:text="Course Offset:"
+            android:textColor="@color/WHITE"
+            android:textStyle="bold"
+            />
+
+        <EditText
+            android:id="@+id/CourseOffset"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="xxx5"
+            android:textColor="@color/WHITE"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:gravity="end"
+            android:text="nm"
+            android:textColor="@color/WHITE"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/row7"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="0dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="Number of Legs:"
+            android:textColor="@color/WHITE"
+            android:textStyle="bold"
+            />
+
+        <EditText
+            android:id="@+id/numberOfLegs"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:gravity="right"
+            android:text="xxx6"
+            android:textColor="@color/WHITE"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/row8"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="5dp"
+        android:gravity="start"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:gravity="start"
+            android:text="Course Side:"
+            android:textColor="@color/WHITE"
+            android:textStyle="bold"
+            />
+
+        <RadioGroup
+            android:id="@+id/radioLeftRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="5dp"
+            android:checkedButton="@+id/radioLEFT"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <RadioButton
+                android:id="@+id/radioLEFT"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Left  "
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                />
+
+            <RadioButton
+                android:id="@+id/radioRIGHT"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Right"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                />
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/row9"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/wlcourse"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:longClickable="false"
+            android:src="@drawable/wl_course"
+            android:layout_gravity="start"
+            >
+        </ImageView>
+
+        <Button
+            android:id="@+id/wl_OK"
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:text="OK"
+            android:textColor="@color/WHITE"
+            android:background="@color/GREEN"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            />
+    </LinearLayout>
+
+</LinearLayout>

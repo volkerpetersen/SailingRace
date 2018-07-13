@@ -1,0 +1,434 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:gravity="center_vertical|center_horizontal" >
+        <TextView
+            style="@style/TextAppearance.AppCompat"
+            android:id="@+id/WindwardMark"
+            android:text= "WWD Mark: Not Set"
+            android:textColor="@color/WHITE"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|start"
+            />
+        <TextView
+            style="@style/TextAppearance.AppCompat"
+            android:id="@+id/LeewardMark"
+            android:text="LWD Mark: Not Set"
+            android:textColor="@color/WHITE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|end" />
+    </LinearLayout>
+    <View android:background="@color/GRAY"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="1dp"
+        android:layout_width = "fill_parent"
+        android:layout_height="2dip"
+        android:layout_centerVertical ="true"
+        android:layout_alignParentTop="true"
+        >
+    </View>
+
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_gravity="start" >
+        <TextView
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:id="@+id/DTMtext"
+            android:textColor="@color/WHITE"
+            android:text="DTM:"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="start" />
+        <TextView
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:id="@+id/DTM"
+            android:textColor="@color/WHITE"
+            android:text="@string/blank_entry"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:gravity="end" />
+        <TextView
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:id="@+id/BTMtext"
+            android:textColor="@color/WHITE"
+            android:text="BTM:"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:gravity="end" />
+        <TextView
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:id="@+id/BTM"
+            android:textColor="@color/WHITE"
+            android:text="@string/blank_entry"
+            android:layout_width="80dp"
+            android:layout_height="fill_parent"
+            android:gravity="end" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_gravity="start" >
+        <TextView
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:id="@+id/TWDlabel"
+            android:textColor="@color/WHITE"
+            android:text="TWD:"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="start" />
+        <TextView
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:id="@+id/TWD"
+            android:textColor="@color/WHITE"
+            android:text="@string/blank_entry"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:gravity="end" />
+        <TextView
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:id="@+id/TextCOG"
+            android:textColor="@color/WHITE"
+            android:text="COG:"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:gravity="end" />
+        <TextView
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:id="@+id/COG"
+            android:textColor="@color/WHITE"
+            android:text="@string/blank_entry"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="end" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:gravity="center_vertical" >
+        <TextView
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:id="@+id/TextSOG"
+            android:textColor="@color/WHITE"
+            android:text="SOG:"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="start" />
+        <TextView
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:id="@+id/SOG"
+            android:textColor="@color/WHITE"
+            android:text="@string/blank_entry"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="end" />
+        <TextView
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:id="@+id/TBStext"
+            android:textColor="@color/WHITE"
+            android:text="@string/goal"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="end|center_vertical" />
+        <TextView
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:id="@+id/TBS"
+            android:textColor="@color/WHITE"
+            android:text="@string/blank_entry"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="end" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:gravity="center_vertical" >
+        <TextView
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="@color/WHITE"
+            android:text="VMG:"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="start" />
+        <TextView
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:id="@+id/VMG"
+            android:textColor="@color/WHITE"
+            android:text="@string/blank_entry"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
+            android:gravity="end" />
+        <TextView
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:textColor="@color/WHITE"
+            android:id="@+id/GoalVMGtext"
+            android:text="@string/goal"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="end|center_vertical" />
+        <TextView
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:id="@+id/GoalVMG"
+            android:textColor="@color/WHITE"
+            android:text="@string/blank_entry"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="end" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="0dp"
+        android:layout_gravity="start" >
+        <TextView
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:id="@+id/HeaderLift"
+            android:textColor="@color/WHITE"
+            android:text="Header"
+            android:layout_width="115dp"
+            android:layout_height="match_parent"
+            android:gravity="start|center" />
+        <TextView
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:id="@+id/avgVariance"
+            android:textColor="@color/WHITE"
+            android:text="100°/100°"
+            android:layout_marginEnd="10dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="match_parent" />
+        <TextView
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:id="@+id/varDuration"
+            android:textColor="@color/WHITE"
+            android:text="C: 00:00\nP: 00:00"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="end|center" />
+    </LinearLayout>
+
+    <View android:background="@color/GRAY"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="1dp"
+        android:layout_width = "fill_parent"
+        android:layout_height="2dp"
+        android:layout_centerVertical ="true"
+        android:layout_alignParentTop="true"
+        >
+    </View>
+
+    <LinearLayout
+        android:id="@+id/gaugeDisplayArea"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_weight="1"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_gravity="start" >
+        <RelativeLayout
+            android:id="@+id/WindGaugeLayout"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" >
+            <ImageView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/wind_gauge_white"
+                android:id="@+id/WindGauge"
+                >
+            </ImageView>
+            <ImageView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:scaleType="centerInside"
+                android:longClickable="false"
+                android:adjustViewBounds="true"
+                android:src="@drawable/windward_stbd"
+                android:id="@+id/WindGaugeBoat"
+                >
+            </ImageView>
+            <ImageView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:scaleType="centerInside"
+                android:longClickable="false"
+                android:adjustViewBounds="true"
+                android:src="@drawable/wind_needle"
+                android:id="@+id/WindGaugeNeedle"
+                >
+            </ImageView>
+           <ImageView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:scaleType="centerInside"
+                android:longClickable="false"
+                android:adjustViewBounds="true"
+                android:src="@drawable/wind_arrow"
+                android:id="@+id/WindGaugeArrow"
+                >
+            </ImageView>
+            <TextView
+                style="@style/TextAppearance.AppCompat.Display2"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:textColor="@color/YELLOW"
+                android:text= "0.0"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="0dp"
+                android:paddingTop="75dp"
+                android:adjustViewBounds="true"
+                android:id="@+id/WindGaugeTWS"
+                >
+            </TextView>
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="0dp"
+            android:layout_gravity="end" >
+            <TextView
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="@color/WHITE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text= "\u00BD FFT period"
+                >
+            </TextView>
+            <TextView
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:textColor="@color/WHITE"
+                android:id="@+id/wind_period"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text= "@string/blank_entry"
+                >
+            </TextView>
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/autotackStatus"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginTop="10dp"
+                android:text="auto\ntack"
+                android:checked="true"
+                android:gravity="top|end" />
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:id="@+id/radioTRUE_APPARENT"
+                android:checkedButton="@+id/radioTRUE"
+                android:gravity="bottom|end">
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioTRUE"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/true_radio"
+                    />
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/radioAPPARENT"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/app_radio"
+                    />
+            </RadioGroup>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal" >
+        <TextView
+            style="@style/TextAppearance.AppCompat.Body2"
+            android:id="@+id/Status"
+            android:text="GPS...."
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:gravity="start" />
+        <TextView
+            style="@style/TextAppearance.AppCompat.Body2"
+            android:id="@+id/Latitude"
+            android:text="Lat:"
+            android:layout_marginStart="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            style="@style/TextAppearance.AppCompat.Body2"
+            android:id="@+id/Longitude"
+            android:text="Lon:"
+            android:layout_marginStart="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View android:id="@+id/separator"
+        android:background="#c2c2c2"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="0dp"
+        android:layout_width = "fill_parent"
+        android:layout_height="2dip"
+        android:layout_centerVertical ="true"
+        android:layout_alignParentTop="true"/>
+
+    <TextView
+        android:id="@+android:id/title"
+        style="?android:attr/listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical" />
+
+</LinearLayout>

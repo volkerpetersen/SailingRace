@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/lake"
+    android:orientation="vertical"
+    tools:context=".Activity_Main">
+
+    <TextView
+        style="@style/TextAppearance.AppCompat.Display3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/app_name"
+        android:textColor="#FF0000"
+        android:gravity="center_horizontal"
+        />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center" >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.25"/>
+        <Button android:id="@+id/button_timer"
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/button_timer"
+            android:onClick="start_timerActivity" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.25"/>
+        <Button android:id="@+id/button_racing"
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/button_racing"
+            android:onClick="start_raceActivity" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.25"/>
+        <Button android:id="@+id/button_settings"
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/button_settings" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.25"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal"
+        android:layout_gravity="start|bottom" >
+        <TextView
+            android:id="@+id/awdLabel"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:gravity="start"
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/awdValue"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:gravity="end"
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/awsLabel"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:gravity="start"
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/awsValue"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:gravity="end"
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:orientation="horizontal"
+        android:layout_gravity="start|bottom" >
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="start|bottom"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="25dp"
+            android:text="@string/blank_entry"
+            android:id="@+id/versionID"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            />
+        <Switch
+            android:id="@+id/windexSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:paddingBottom="25dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:text="Anemometer" />
+    </LinearLayout>
+</LinearLayout>

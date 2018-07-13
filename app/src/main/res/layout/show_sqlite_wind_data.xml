@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        >
+        <TextView
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:textColor="@color/BLUE"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="match_parent"
+            android:gravity="left|center_vertical"
+            android:text="Number of Races:"
+            />
+        <TextView
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:id="@+id/NumberOfRaces"
+            android:textColor="@color/BLUE"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:gravity="right|center_vertical"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        >
+        <TextView
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:textColor="@color/BLUE"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="match_parent"
+            android:gravity="left|center_vertical"
+            android:text="Number of Records:"
+            />
+        <Button
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:id="@+id/NumberOfRecords"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:gravity="center"
+            android:textColor="@color/BLUE"
+            >
+        </Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        >
+        <TextView
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:textColor="@color/BLUE"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="match_parent"
+            android:gravity="center|bottom"
+            android:text="Date"
+            />
+        <TextView
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:textColor="@color/BLUE"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="# of\nrecords"
+            />
+        <TextView
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:textColor="@color/BLUE"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="avg\nTWD"
+            />
+        <TextView
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:textColor="@color/BLUE"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="avg\nTWS"
+            />
+    </LinearLayout>
+
+    <View android:background="@color/GRAY"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="1dp"
+        android:layout_width = "fill_parent"
+        android:layout_height="2dp"
+        android:layout_centerVertical ="true"
+        android:layout_alignParentTop="true"
+        >
+    </View>
+
+    <ListView
+        android:id="@+id/RaceTableListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </ListView>
+
+</LinearLayout>

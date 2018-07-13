@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="Boat Settings" >
+        <SwitchPreference
+            android:title="Wind Anemometer"
+            android:key="key_Windex"
+            android:defaultValue="true"
+            >
+        </SwitchPreference>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:title="Capri-25 Polars"
+            android:key="key_Polars"
+            android:summary="Capri-25 Polars require active Wind Anemometer" >
+        </CheckBoxPreference>
+        <EditTextPreference
+            android:title="Tack Angle"
+            android:key="key_TackAngle"
+            android:defaultValue="40"
+            android:inputType="number"
+            android:summary="Target Tack Angle INT°">
+        </EditTextPreference>
+        <EditTextPreference
+            android:defaultValue="30"
+            android:inputType="number"
+            android:key="key_GybeAngle"
+            android:summary="Target Gybe Angle INT°"
+            android:title="Gybe Angle">
+        </EditTextPreference>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="Race Settings"
+        android:layout="@layout/preferences_divider" >
+        <ListPreference
+            android:defaultValue="4"
+            android:entries="@array/listClassArray"
+            android:entryValues="@array/listClassValues"
+            android:key="key_RaceClass"
+            android:summary="%s"
+            android:title="Race Class">
+        </ListPreference>
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:title="Warning Period"
+            android:summary="Begin Start Sequence with Warning period."
+            android:key="key_Warning" >
+        </CheckBoxPreference>
+        <EditTextPreference
+            android:title="Start Sequence Time"
+            android:key="key_StartSequence"
+            android:defaultValue="3"
+            android:inputType="number"
+            android:summary="Next Class Start every INT minutes" >
+        </EditTextPreference>
+        <EditTextPreference
+            android:title="W/L Course Distance"
+            android:key="key_CourseDistance"
+            android:defaultValue="1852"
+            android:inputType="numberDecimal"
+            android:summary="W/L distance INT m (1852m = 1nm" >
+        </EditTextPreference>
+        <EditTextPreference
+            android:title="Course Width (Left to Right)"
+            android:key="key_LeftRightDistance"
+            android:defaultValue="20"
+            android:inputType="numberDecimal"
+            android:summary="Course width equals INT% of W/L distance" >
+        </EditTextPreference>
+        <EditTextPreference
+            android:title="Number of Legs on W/L Course"
+            android:key="key_NumberOfLegs"
+            android:defaultValue="5"
+            android:inputType="number"
+            android:summary="INT legs on this W/L Course" >
+        </EditTextPreference>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="Software Parameters"
+        android:layout="@layout/preferences_divider" >
+        <EditTextPreference
+            android:title="Screen Updates"
+            android:key="key_ScreenUpdates"
+            android:defaultValue="1"
+            android:inputType="number"
+            android:summary="Screen Updates every INT seconds">
+        </EditTextPreference>
+        <EditTextPreference
+            android:title="GPS Location Updates"
+            android:key="key_GPSUpdateTime"
+            android:defaultValue="450"
+            android:inputType="number"
+            android:summary="New location every INT milli-seconds">
+        </EditTextPreference>
+        <ListPreference
+            android:dialogTitle="Wind Data smoothing"
+            android:title="Wind Data smoothing"
+            android:key="key_avgWIND"
+            android:defaultValue="1"
+            android:summary="Average %s"
+            android:entries="@array/listSmoothing"
+            android:entryValues="@array/listSmoothingValues" >
+        </ListPreference>
+        <ListPreference
+            android:dialogTitle="GPS Data smoothing"
+            android:title="GPS Data smoothing"
+            android:key="key_avgGPS"
+            android:defaultValue="3"
+            android:summary="Average %s"
+            android:entries="@array/listSmoothing"
+            android:entryValues="@array/listSmoothingValues" >
+        </ListPreference>
+        <ListPreference
+            android:dialogTitle="Long-range TWD average"
+            android:title="Long-range TWD average"
+            android:key="key_longAvg"
+            android:defaultValue="30"
+            android:summary="%s rolling average TWD"
+            android:entries="@array/listLongRangeAvg"
+            android:entryValues="@array/listLongRangeAvgValues"
+            >
+        </ListPreference>
+    </PreferenceCategory>
+</PreferenceScreen>

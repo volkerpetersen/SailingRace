@@ -1,0 +1,59 @@
+<resources xmlns:xliff="http://schemas.android.com/tools">
+    <!-- google_app_id is required to access the Google MAP API.  The key comes from:
+    https://console.developers.google.com/home/dashboard?project=volkermaps
+    -->
+    <string name="google_app_id">778559080971</string>
+    <string name="app_name_TM">Offline\'s SailingRace&#8482;</string>
+    <string name="app_name">Offline\'s Sailing Race</string>
+    <string name="minutes">Minutes</string>
+    <string name="seconds">Seconds</string>
+    <string name="className">Class</string>
+    <string name="about">About</string>
+    <string name="quit">Quit App</string>
+    <string name="action_settings">Settings</string>
+    <string name="goal">(goal):</string>
+    <string name="button_countdown">Start</string>
+    <string name="button_timer">Timer</string>
+    <string name="button_racing">Racing</string>
+    <string name="button_settings">Settings</string>
+    <string name="title_activity_start_map">Race Course Map</string>
+    <string name="title_activity_start_timer">Race Start Timer</string>
+    <string name="title_activity_start_race">Start the Race</string>
+    <string name="title_list_wind_table">Wind DB Listings - </string>
+    <string name="title_sqlite_wind_data">SQLite Wind Data</string>
+    <string name="title_activity_setting">Settings</string>
+    <string name="sqlite_sync">Sync Wind DB</string>
+    <string name="sqlite_reset">Reset Wind DB</string>
+    <string name="sqlite_show_data">Show Wind Data</string>
+    <string name="app_radio">APP </string>
+    <string name="true_radio">TRUE</string>
+    <string name="blank_entry">- - </string>
+    <string name="QuitRace">Do you want to quit this race?</string>
+    <string name="QuitTimer">Do you want to quit this Race Start Timer?</string>
+    <string name="QuitApp">Do you want to quit Offline\'s\nSailingRace App?</string>
+    <string name="AboutApp">\nWelcome to the Offline Sailing Race App!
+        \nIf you are using this App together with the SailTimer Anemometer, please
+        make sure the SailTimer API&#8482; App runs in the background with the SailTimer
+        Bluetooth connection up and running.
+        \nPlease click \'Help\' to access the App documentation on the web.
+        \n\nDesign &#38; Implementation: KaiserWare&#8482; - &#169; 2015-</string>
+
+    <!-- Degree Formats, using Unicode character for degree symbol -->
+    <string name="Degrees"><xliff:g id="degrees">%1.0f</xliff:g>\u00B0</string>
+    <string name="Deg1"><xliff:g id="degrees">%1.1f</xliff:g>\u00B0</string>
+
+    <!-- DTM | BTM Format -->
+    <string name="BTM_DTM">BTM: <xliff:g id="BTM">%02.0f</xliff:g>\u00B0    |    DTM: <xliff:g id="DTM">%1.1f</xliff:g></string>
+
+    <!-- Minutes:Seconds Format -->
+    <string name="MinSec"><xliff:g id="min">%02.0f</xliff:g>:<xliff:g id="sec">%02.0f</xliff:g></string>
+
+    <!-- various integer number Formats -->
+
+    <!-- various double/float number Formats -->
+    <string name="DF0"><xliff:g id="df0">%03.0f</xliff:g></string>
+    <string name="DF1"><xliff:g id="df1">%1.1f</xliff:g></string>
+    <string name="DF2"><xliff:g id="df2">%1.2f</xliff:g></string>
+    <string name="DF4"><xliff:g id="df4">%1.4f</xliff:g></string>
+    <string name="INT3"><xliff:g id="int3">%3.0f</xliff:g></string>
+</resources>
