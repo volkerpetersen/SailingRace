@@ -1,0 +1,6 @@
+########## Begin - File execution order
+DirectoryIndex index.php index.html
+########## End - File execution order
+
+##ErrorDocument 404 http://southmetrochorale.org/404.php
+##ErrorDocument 403 http://southmetrochorale/403.php

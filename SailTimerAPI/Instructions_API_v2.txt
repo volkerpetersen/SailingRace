@@ -1,0 +1,344 @@
+INSTRUCTIONS FOR RECEIVING WIND DATA FROM ANDROID VERSION OF SAILTIMER API™
+SailTimer Inc. - April 22, 2017
+www.SailTimerWind.com/Developers.html
+
+The SailTimer API on Android sends two things via broadcasted Intents (not via a UDP or TCP/IP port) to your app:
+(a) wind speed and direction from the wireless SailTimer Wind Instrument™.
+(b) a Live Overlay of tacking routes and wind conditions that can be live or replays, for all app users (whether they have a wireless Wind Instrument or not).  
+=========================================
+LINKS
+API description for sailors:  www.sailtimerwind.com/API.html
+API summary for developers:  www.sailtimerwind.com/Developers.html
+Download page for API in Play Store:  https://play.google.com/store/apps/details?id=com.windinstrument.api
+
+=========================================
+EASTER EGG:  HOW TO TURN ON SIMULATED DATA
+There is a hidden button in the SailTimer API that allows the API to send test data even if no wireless Wind Instrument is available.  
+
+1. Get the SailTimer API from the Google Play store.  Open the app and log in.  With the menu in the upper right, select Sharing.
+2. On the Sharing panel, tap 10 times on the title in the top bar.  You will see a message appear after that on the bottom of the screen, saying that simulated data is now being sent.
+To stop the test data, tap 5 or more times on the title in the top bar, or close the API.
+
+The numbers are random. Angles are from 1 to 360 in random increments of 2 degrees. Wind speed is a random number from 1 to 5 with one decimal.
+=========================================
+HASH CODE ENCRYPTION ON MOBILE DEVICE
+A hash code is used to encrypt the wind data when it is sent from the SailTimer API to your app within the mobile device.  This ensures that no other app on the same device can borrow the wind data that you are receiving, without permission.  It should also ensure that no-one else can intercept the data coming to your app and give you altered data for example.  So the hash code and password provided is just a good general security precaution.  The hash passcode which was used to encrypt the request (intent) will be the same to decrypt the result. You should use the hash code that you got from Sail timer when you requested developer access.
+
+//Define strings for data received action	
+public final static String ACTION_DATA_AVAILABLE = "com.ST.bluetooth.le.ACTION_DATA_AVAILABLE";
+public final static String AWD_DATA = "com.ST.bluetooth.le.AWD_DATA"; // Action only for API V1.0 < V2.0
+public final static String AWS_DATA = "com.ST.bluetooth.le.AWS_DATA"; // Action only for API V1.0 < V2.0
+public final static String WIMWV = "com.ST.bluetooth.le.WIMWV"; // Action only for API V2.0+
+public final static String WIMWD = "com.ST.bluetooth.le.WIMWD"; // Action only for API V2.0+
+public final static String PSTW = "com.ST.bluetooth.le.PSTW"; // Action only for API V2.0+
+//Define string for hash code used to decrypt data    
+public String hash = "";
+
+onCreate() {
+	//get Hash key used for decryption using POST
+	// "https://www.sailtimermaps.com/getHash.php"
+	//Using parameters: user & password
+}
+/*
+ *
+ * BroadcastReceiver which receives broadcasted Intents
+ * ONLY for API v1.0+
+ *
+ */
+   private final BroadcastReceiver mGattUpdateReceiver = new BroadcastReceiver() {
+       @Override
+       public void onReceive(Context context, Intent intent) {
+           final String action = intent.getAction();
+           if (ACTION_DATA_AVAILABLE.equals(action)) {
+           	if (intent.getExtras().containsKey(AWD_DATA)) {
+           		String awd = intent.getStringExtra(AWD_DATA);            	 
+           		try {
+           			double angle = Double.parseDouble(decryptIt(awd,hash));
+           		} catch (Exception e) {            			
+           		}	
+           	}
+           	if (intent.getExtras().containsKey(AWS_DATA)) {
+           		String aws = intent.getStringExtra(AWS_DATA);            	 
+           		try {
+           			double speed = Double.parseDouble(decryptIt(aws,hash));
+           		} catch (Exception e) {            			
+           		}	
+           	}
+           }
+       }
+   };
+/*
+ *
+ * BroadcastReceiver which receives broadcasted Intents
+ * ONLY for API v2.0+
+ *
+ */
+private final BroadcastReceiver mGattUpdateReceiver = new BroadcastReceiver() {
+	public void onReceive(Context context, Intent intent) {
+		try {
+			action = intent.getAction();
+			if (ACTION_DATA_AVAILABLE.equals(action)) {
+				Bundle bundle = intent.getExtras();
+				if (bundle != null) {
+					for (String key : bundle.keySet()) {
+						if (key.equals(WIMWV) {
+							//Your code here
+						}
+						if (key.equals(WIMWD) {
+							//Your code here
+						}
+						if (key.equals(PSTW) {
+							//Your code here
+						}
+					}
+				}
+			}
+		}
+		catch (Exception ex) {
+		}
+	}
+};
+public static String decryptIt(String value, String cryptoPass) {
+       try {
+           DESKeySpec keySpec = new DESKeySpec(cryptoPass.getBytes("UTF8"));
+           SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
+           SecretKey key = keyFactory.generateSecret(keySpec);
+           byte[] encrypedPwdBytes = Base64.decode(value, Base64.DEFAULT);
+           Cipher cipher = Cipher.getInstance("DES");
+           cipher.init(Cipher.DECRYPT_MODE, key);
+           byte[] decrypedValueBytes = (cipher.doFinal(encrypedPwdBytes));
+           String decrypedValue = new String(decrypedValueBytes);
+           return decrypedValue;
+       } catch (InvalidKeyException e) {
+           e.printStackTrace();
+       } catch (UnsupportedEncodingException e) {
+           e.printStackTrace();
+       } catch (InvalidKeySpecException e) {
+           e.printStackTrace();
+       } catch (NoSuchAlgorithmException e) {
+           e.printStackTrace();
+       } catch (BadPaddingException e) {
+           e.printStackTrace();
+       } catch (NoSuchPaddingException e) {
+           e.printStackTrace();
+       } catch (IllegalBlockSizeException e) {
+           e.printStackTrace();
+       }
+       return value;
+   }
+protected void onResume() {
+       super.onResume();
+       //We register our receiver for updates
+       registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
+   }
+   private static IntentFilter makeGattUpdateIntentFilter() {
+       final IntentFilter intentFilter = new IntentFilter();
+       intentFilter.addAction(ACTION_DATA_AVAILABLE);
+       return intentFilter;
+   }
+   @Override
+   protected void onPause() {
+       super.onPause();
+       unregisterReceiver(mGattUpdateReceiver);
+   }
+=========================================
+OFFICIAL NMEA 0183 SENTENCES FOR WIND SPEED AND ANGLE
+Until now, the SailTimer API™ on Android transmitted Apparent Wind Direction and Apparent Wind Speed simply as AWD and AWS.  But Version 2.0 of the API added 3 sentences in NMEA 0183 format for wind data from the wireless SailTimer Wind Instrument™.  The 3 sentences are as follows, and information about parsing them is below.  The 3 new sentences being added are: 
+$WIMWD,148,T,166,M,1.2,N,0.6,M*03”
+$WIMWV,360.0,R,020.0,N,A*03”
+$PSTW,116,T,133,M,00.0,N,00.0,M*03
+1. Official Sentence for True (Non-Apparent) Wind Direction: MWD
+The format of the WIMWD" NMEA sentence for wind direction is:     $WIMWD,148,T,166,M,1.2,N,0.6,M*23
+In this format, initial 2 letters after the $ are the talker-ID, with WI specifying that it is Weather Information.  Then the MWD indicates that it is wind speed and direction.  
+All of the wind data in MWD is True wind (not Apparent or Relative), like what is used on maps and in weather forecasts.  In contrast, the Apparent (also called Relative) wind is what you feel when you are moving. 
+There is also True-North wind direction (versus Magnetic-North wind direction), and it is important to remember that this is totally separate from the previous paragraph.  Magnetic-North direction refers to the magnetic north pole that traditional compasses point to.  But True-North direction is based on the North Pole on a map, which is not quite in the same place.
+So in the sample sentence above: 148,T is the wind direction in True-North degrees.  166,M is the Magnetic-North wind direction. 
+1.2,N is the wind speed in knots (nautical miles per hour), which is represented by N in the sentence.  0.6,M is the wind speed in meters per second.  Finally, the 2 digits after the '*' is a checksum.  
+Once the sentence is assembled, we use hash encryption before sending it as intents.
+
+2.  Official Sentence for Wind Angle: MWV
+Wind angle is defined as the difference between the boat's heading and the Apparent Wind Direction (AWD).  
+The format of MWV for wind speed and wind angle (not the same as wind direction) is:     $WIMWV,360.0,R,020.0,N,A*--
+The initial 2 letters after the $ are the talker-ID, with WI specifying that it is Weather Information.  Then the MWV indicates that it is wind speed and angle.  360.0 is in degrees and it's 5 characters long.  
+The next parameter is R for relative (i.e., Apparent Wind).  
+020.0 is sample data for the wind speed.  The units for wind speed on boats is in knots, which is represented by N in the sentence. 
+'A' means valid data, and 2 Bytes after the '*' is checksum.
+3. Proprietary STW Sentence
+There is no NMEA 0183 sentence for Apparent wind direction and speed. When the specification was set up probably in the early 1990s, perhaps it did not seem possible that a compass could ever be built right in a masthead anemometer. So NMEA 0183 only includes sentences for apparent wind angle, not direction. But we don't want to convert from Apparent to True for the MWD sentence, send that data to an app, and then re-convert it back to Apparent. Doing the math twice makes the data less precise. Therefore, we added a proprietary sentence. It is acceptable within the NMEA 0183 specification to use a proprietary sentence, if it begins with $P to indicate that it is proprietary, and then some characters to identify what it is. 
+$PSTW,116,T,133,M,0,N,0.0,M*03
+$P - Proprietary sentence
+STW - SailTimer Wind Instrument
+116,T - Apparent Wind Direction (AWD) in True-North reference 133,M - Apparent Wind Direction (AWD) in Magnetic-North reference 0,N - Apparent Wind Speed in knots
+0.0,M - Apparent Wind Speed in meters per second
+*03 - Checksum 
+=========================================
+WEB SERVICES FOR LIVE OVERLAY
+You can request data from/to the API from an activity and/or a service, using an intent for every request of data.  A Broadcast Receiver must be created with an Intent Filter, as shown in the example code below. 
+The "URL" is the regular expression used to identify which kind of data are you requesting and which parameters are you sending. The format is like this:
+{Reserved request name}/{Param 1}/{Param 2}/.../{Param n}/
+The Sailtimer API offers 8 regular expressions to interact with:
+1-"EventData":
+It will retrieve detailed data of the event.
+Syntax:
+EventData/{(int) eventID}/
+Example:
+EventData/31/
+
+2.-"EventDataperUser":
+It will retrieve all data from a specific user in an event.
+Syntax:
+EventData/{(int) eventID}/{(int) User}/
+Example
+EventData/10/2/
+3.-"Events":
+Retrieves a detailed list of all active events.
+Syntax:
+Events/
+4.-"CurrentDataAPI":
+Retrieves the wind data from all active users in the last minute
+Syntax:
+CurrentDataAPI/{(double)latitude}/{(double)longitude}/
+Example
+CurrentDataAPI/48.2365485/-61.325668/
+5.-"LiveDatanames":
+Retrieves same data as "LiveData" but this includes the name of the boats/users.
+Syntax:
+LiveDatanames/
+6-"Users":
+Retrieves id and names of all currently active users.
+Syntax:
+Users/
+7.-"eventByName":
+It will give as result all wind data from a specific event.
+Syntax:
+eventByName/{(String)Name of event}/
+Example:
+eventByName/North America Cup/
+8.-"SaveData":
+This URL will save the sent data into Sailtimer repositories. Keep in mind the data will be saved under the user which is logged in the API in the moment of the request.
+Syntax:
+SaveData/{(int)ID of event}/{(double)latitude}/{(double)longitude}/{(int)accuracy}/{(int)sog}/{(int)cog}/{(int)awd}/{(double)aws}/{(int)twd}/{(double)tws}/
+Example:
+SaveData/0/48.2365485/-61.325668/11/32/5/181/3.5/200/2.1/
+Notes:
+If you are not in any event, this parameter must be 0.
+
+/*
+ * This file contains the basic code to call and receive data from sailtimermaps.com
+ * For security reasons, we recommend creating a new encryption passcode for every call.
+ * The result's callback can take some seconds depending on the amount of data.  It will be in JSON format.
+ */
+	// Name of the action to receive
+	String ACTION_RESP = "com.ST.webServices.get.RESULT";
+	//URL of the RESTful web service
+	String url = "EventData/10/2/";
+	//Create an instance of a BroadcastReceuver
+	private BroadcastReceiver receiver;
+
+	//Create a filter for the broadcastreceiver
+	IntentFilter filter = new IntentFilter();
+	filter.addAction(ACTION_RESP);
+	
+
+
+	/*
+	*	To call any web service
+	*/
+	public void startService(String url) {
+		Intent i = new Intent();
+		i.setComponent(new ComponentName("com.windinstrument.api", "com.windinstrument.api.WS_getRequest")); //Not modify
+		i.putExtra("WS_Data", encryptIt(url, "This_is_your_hash"));
+		startService(i);
+	}
+
+	/*
+	*	To receive Web service's answer
+	*	Inside of Action's onCreate method
+	*/
+		receiver = new BroadcastReceiver() {
+		    @Override
+		    public void onReceive(Context context, Intent intent) {
+		    	String encText = intent.getStringExtra("Result");  //Do not change the parameter
+				String desText = (decryptIt(encText,"This_is_your_hash"));
+		    }
+		   
+		  };
+		//At the end of the onCreate Method
+		registerReceiver(receiver, filter);
+	
+	/*
+	*	To decrypt result
+	*/
+	 public static String decryptIt(String value, String cryptoPass) {
+	        try {
+	            DESKeySpec keySpec = new DESKeySpec(cryptoPass.getBytes("UTF8"));
+	            SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
+	            SecretKey key = keyFactory.generateSecret(keySpec);
+	            byte[] encrypedPwdBytes = Base64.decode(value, Base64.DEFAULT);
+	            Cipher cipher = Cipher.getInstance("DES");
+	            cipher.init(Cipher.DECRYPT_MODE, key);
+	            byte[] decrypedValueBytes = (cipher.doFinal(encrypedPwdBytes));
+	            String decrypedValue = new String(decrypedValueBytes);
+	            return decrypedValue;
+	        } catch (InvalidKeyException e) {
+	            e.printStackTrace();
+	        } catch (UnsupportedEncodingException e) {
+	            e.printStackTrace();
+	        } catch (InvalidKeySpecException e) {
+	            e.printStackTrace();
+	        } catch (NoSuchAlgorithmException e) {
+	            e.printStackTrace();
+	        } catch (BadPaddingException e) {
+	            e.printStackTrace();
+	        } catch (NoSuchPaddingException e) {
+	            e.printStackTrace();
+	        } catch (IllegalBlockSizeException e) {
+	            e.printStackTrace();
+	        }
+	        return value;
+	    }
+
+	/*
+	*	To encrypt your data
+	*/
+	public static String encryptIt(String value, String cryptoPass) {
+		try {
+			DESKeySpec keySpec = new DESKeySpec(cryptoPass.getBytes("UTF8"));
+			SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
+			SecretKey key = keyFactory.generateSecret(keySpec);
+			byte[] clearText = value.getBytes("UTF8");
+			// Cipher is not thread safe
+			Cipher cipher = Cipher.getInstance("DES");
+			cipher.init(Cipher.ENCRYPT_MODE, key);
+			String encrypedValue = Base64.encodeToString(
+					cipher.doFinal(clearText), Base64.DEFAULT);
+			/*if (debug) {
+				// LogToSD.write("EncryptIt,"+TAG, "Encrypted: " + value +
+				// " -> " + encrypedValue);
+			}*/
+			return encrypedValue;
+
+		} catch (InvalidKeyException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (InvalidKeySpecException e) {
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (BadPaddingException e) {
+			e.printStackTrace();
+		} catch (NoSuchPaddingException e) {
+			e.printStackTrace();
+		} catch (IllegalBlockSizeException e) {
+			e.printStackTrace();
+		}
+		return value;
+	};
+
+
+
+
+=========================================
+LEGALITIES
+We have worked hard to develop the SailTimer API™ (and use it with our own app), but use of the API is at your sole risk. SailTimer Inc. provides no warranties for the API and data and use of the Wind Instrument including no warranties about quality, performance or accuracy. This programming code is provided so that you can receive data from the SailTimer Wind Instrument™ as conveniently as possible. By using it, you agree not to reverse-engineer SailTimer Inc. software, products or services, and reiterate or state your agreeement with the End-User License Agreement for the API in the Google Play store.  https://play.google.com/store/apps/details?id=com.windinstrument.api

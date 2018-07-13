@@ -1,0 +1,116 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            // Desktop and Laptop location
+            storeFile file('D:/VolkerPetersen/Dropbox/ProgramCode/Android/SailingRace/VariousAppDevelopmentAssets/SailingRaceKeystore.jks')
+
+            keyAlias 'SailingRace'
+            storePassword 'vesret7713,./'
+            keyPassword 'vesret7713,./'
+        }
+    }
+
+    /**
+     * compileSdkVersion specifies the Android API level Gradle should use to
+     * compile your app. This means your app can use the API features included in
+     * this API level and lower.
+     */
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
+
+    /**
+     * The defaultConfig block encapsulates default settings and entries for all
+     * build variants, and can override some attributes in main/AndroidManifest.xml
+     * dynamically from the build system. You can configure product flavors to override
+     * these values for different versions of your app.
+     */
+    defaultConfig {
+        applicationId "com.kaiserware.sailingrace"
+        versionCode 35
+        versionName "Version: 3.5 Alpha"
+        minSdkVersion 19
+        targetSdkVersion 27
+    }
+
+    flavorDimensions "ver35"
+
+    /**
+     * The productFlavors block is where you can configure multiple product
+     * flavors. This allows you to create different versions of your app that can
+     * override the defaultConfig block with their own settings. Product flavors are
+     * optional, and the build system does not create them by default. This example
+     * creates a free and paid product flavor. Each product flavor then specifies
+     * its own application ID, so that they can exist on the Google Play Store, or
+     * an Android device, simultaneously.
+     *
+     * If you're using Android plugin 3.0.0 or higher, you need to also declare
+     * and assign each flavor to a flavor dimension. To learn more, read the
+     * migration guide.
+     *
+    productFlavors {
+        Free {
+            applicationId "com.kaiserware.sailingrace"
+            versionCode 35
+            versionName "Version: 3.5 Alpha"
+            minSdkVersion 19
+            targetSdkVersion 27
+            dimension "ver35"
+        }
+    }
+     */
+
+    /**
+     * The buildTypes block is where you can configure multiple build types.
+     * By default, the build system defines two build types: debug and release. The
+     * debug build type is not explicitly shown in the default build configuration,
+     * but it includes debugging tools and is signed with the debug key. The release
+     * build type applies Proguard settings and is not signed by default.
+     */
+    buildTypes {
+        /**
+         * By default, Android Studio configures the release build type to enable code
+         * shrinking, using minifyEnabled, and specifies the Proguard settings file.
+         */
+        release {
+            //proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled false  // Enables/disables (true/false) code shrinking for the release build type.
+            signingConfig signingConfigs.config
+            debuggable false    // Disables debugging code in the release build type.
+
+        }
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.config
+            debuggable true
+        }
+    }
+    sourceSets { main { java.srcDirs = ['src/main/java', 'src/test/java'] } }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+repositories {
+    jcenter()
+    google()
+}
+
+dependencies {
+    implementation "com.android.support:appcompat-v7:27.1.1"
+    implementation "com.android.support:support-v4:27.1.1"
+    implementation "com.android.support:support-core-ui:27.1.1"
+    implementation "com.android.support:customtabs:27.1.1"
+    implementation "com.android.support:support-media-compat:27.1.1"
+    implementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
+    implementation files('libs/achartengine-1.2.0.jar')
+    // implementation 'com.google.android.gms:play-services:15.0.1'   // was 10.2.1  prior 8.4.0
+    implementation 'com.google.android.gms:play-services-gcm:15.0.1'
+    implementation 'com.google.android.gms:play-services-location:15.0.1'
+    implementation 'com.google.android.gms:play-services-ads:15.0.1'
+    implementation 'com.google.android.gms:play-services-auth:15.0.1'
+    implementation 'com.google.android.gms:play-services-maps:15.0.1'
+}

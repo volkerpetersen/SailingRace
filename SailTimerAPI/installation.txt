@@ -1,0 +1,6 @@
+D:\VolkerPetersen\AppData\Local\Android\Sdk\platform-tools>adb install -r "D:\VolkerPetersen\Google Drive\ProgramCode\Android\SailingRace\SailTimerAPI\SailTimerAPI.apk\SailTimerAPI.apk"
+3618 KB/s (225755 bytes in 0.060s)
+        pkg: /data/local/tmp/SailTimerAPI.apk
+Success
+
+D:\VolkerPetersen\AppData\Local\Android\Sdk\platform-tools>
