@@ -97,7 +97,6 @@ public class Fragment_RaceInfo extends Fragment {
     private double lastDuration = 0.0d;         // keeps track of the duration of the last wind oscillation cycle
     private double sumVariances = 0.0d;         // sum of the heading variances while in a Header or Lift sequence
     private double vmgu = 0.0;                  // Velocity Made Good upwind
-    public static int screenUpdates;            // screen update frequency in sec.  Set in preferences.
     private String tack = "stbd";               // "stbd" or "port" depending on current active board we're sailing on
     private double CourseOffset = 0.0d;         // Upwind leg=0.0  |  Downwind leg=180.0
     private double TackGybe;                    // contains tackAngle Upwind and gybeAngle Downwind
@@ -106,6 +105,7 @@ public class Fragment_RaceInfo extends Fragment {
     private int polars;                         // SharedPreference to indicate if Capri-25 polars are used (1) or not (0)
     private int WINDEX;                         // SharedPreference to indicate if Windex is used (1) or not (0)
     private boolean autotack = true;            // with Windex enabled, program will auto tack / gybe when set to true
+    public static int screenUpdates;            // screen update frequency in sec.  Set in preferences.
     private Handler ScreenUpdate=new Handler(); // Handler to implement the Runnable for the Screen Updates
     public static long current_duration=0;      // duration of the current wind Oscillation
     public static boolean above_mean=true;      // is the current oscillation above mean (true) or below (false)

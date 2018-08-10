@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+The App uses the key (alias SailingRace) in
+...\ProgramCode\Android\SailingRace\VariousAppDevelopmentAssets\SailingRaceKeystore.jks
+to sign the App for upload to the Google Play Store (using the Android Studio Menu option
+Build -> Generate Signed APK
+and to generate the Google Maps API-key (stored below in <meta-data> tag
+
+See
+D:\VolkerPetersen\Google Drive\ProgramCode\Android\SailingRace\VariousAppDevelopmentAssets>"C:\Program
+Files\Java\jre1.8.0_91\bin\keytool.exe" -list -alias SailingRace -keystore SailingRaceKeystore.jks
+
+Enter keystore password: vesret7713,./
+
+SailingRace, Aug 14, 2016, PrivateKeyEntry,
+Certificate fingerprint (SHA1): 76:F4:4A:4A:19:DF:B3:2E:D8:5E:1F:EF:BC:3E:1A:2B:54:19:23:E9
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kaiserware.sailingrace"
+    android:versionCode="35"
+    android:versionName="Version: 3.5 Alpha" >
+
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="27" >
+    </uses-sdk>
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--
+    not required any longer for Google Maps Services
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    -->
+
+
+    <!--
+    Declare this required feature if you want to make the app available to BLE-capable
+    devices only.  If you want to make your app available to devices that don't support BLE,
+    you should omit this in the manifest.  Instead, determine BLE capability by using
+    PackageManager.hasSystemFeature(FEATURE_BLUETOOTH_LE)
+    -->
+    <!--
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
+    -->
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+    <!-- Required by older versions of Google Play services to create GCM registration tokens -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <application
+        android:allowBackup="true"
+        android:debuggable="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:testOnly="true"
+        android:theme="@style/Theme.AppCompat" >
+        <activity
+            android:name="com.kaiserware.sailingrace.Activity_Main"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.kaiserware.sailingrace.Activity_StartSequence"
+            android:label="@string/title_activity_start_timer"
+            android:parentActivityName="com.kaiserware.sailingrace.Activity_Main"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+        <activity
+            android:name="com.kaiserware.sailingrace.Activity_RaceInfo"
+            android:label="@string/title_activity_start_race"
+            android:parentActivityName="com.kaiserware.sailingrace.Activity_Main"
+            android:theme="@android:style/Theme.Holo.NoActionBar" >
+        </activity>
+        <activity
+            android:name="com.kaiserware.sailingrace.sqlite_show_wind_race_summary"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/title_sqlite_wind_data"
+            android:parentActivityName="com.kaiserware.sailingrace.Activity_Main"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >
+        </activity>
+        <activity
+            android:name="com.kaiserware.sailingrace.sqlite_show_wind_records"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/title_list_wind_table"
+            android:parentActivityName="com.kaiserware.sailingrace.sqlite_show_wind_race_summary"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >
+        </activity>
+
+        <!--
+        <fragment
+            android:name=".PlotChartFragment"
+            android:label="AChartEngine Test"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
+            android:icon="@mipmap/ic_launcher"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.kaiserware.sailingrace.Activity_Main" />
+        </fragment>
+        -->
+
+        <activity
+            android:name="org.achartengine.GraphicalActivity"
+            android:icon="@mipmap/ic_launcher"
+            android:label="AChartEngine Test"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.kaiserware.sailingrace.Activity_Main" />
+        </activity>
+        <activity
+            android:name="com.kaiserware.sailingrace.SailingRacePreferences"
+            android:label="@string/title_activity_setting"
+            android:noHistory="true"
+            android:parentActivityName="com.kaiserware.sailingrace.Activity_Main"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >
+        </activity>
+
+        <!--
+            register our background service to perform some basic processing outside of the UI
+            exported="false" means that only components in this app can utilize this service.
+        -->
+        <service
+            android:name="com.kaiserware.sailingrace.AppBackgroundServices"
+            android:exported="false" />
+
+        <!--
+            register SailiTimerAPI Broadcast Receiver so that we can receive the apparent wind
+            data from that App
+        -->
+        <receiver android:name="com.kaiserware.sailingrace.SailTimerAPI" />
+
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource at /src/release or
+             src/debug using the <meta-data> tag. (See the file "/src/release/res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+
+
+        <!-- android:value="AIzaSyDzCAa-hibdRJ-NdOnIRK-IG5uN2U3kv9c" old key for com.example.volkerpetersen -->
+
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyDz-R8w4tca_ugDLxenVwgDN9AfMN2VQv4" /> <!-- key for com.kaiserware package -->
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!--
+            Service handling Google Sign-In user revocation. For apps that do not integrate with
+            Google Sign-In, this service will never be started.
+        -->
+        <service
+            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+            android:exported="true"
+            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />
+
+        <activity
+            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" /> <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent" />
+
+        <provider
+            android:name="com.android.tools.ir.server.InstantRunContentProvider"
+            android:authorities="com.kaiserware.sailingrace.com.android.tools.ir.server.InstantRunContentProvider"
+            android:multiprocess="true" />
+    </application>
+
+</manifest>

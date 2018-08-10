@@ -38,7 +38,9 @@ import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.TimeZone;
 import android.support.v7.view.ContextThemeWrapper;
 import javax.net.ssl.HttpsURLConnection;
@@ -123,6 +125,12 @@ public class Activity_Main extends Activity {
         // on the left edge of Android Studio Window and select either FreeDebug or FreeRelease
         if (BuildConfig.DEBUG) {
             Log.i(LOG_TAG, "APP Variant - Debug");
+            Log.d(LOG_TAG, "Race Courses: ");
+            for (Map.Entry<String, HashMap>entry : para.raceCourses.entrySet()) {
+                String key = entry.getKey();
+                HashMap wp = entry.getValue();
+                Log.d(LOG_TAG, "Race '"+key+"'  contains "+wp.size()+" waypoints.");
+            }
         } else {
             Log.i(LOG_TAG, "APP Variant - Production");
         }

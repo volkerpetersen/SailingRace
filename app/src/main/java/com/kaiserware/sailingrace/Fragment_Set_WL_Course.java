@@ -107,7 +107,7 @@ public class Fragment_Set_WL_Course extends Fragment {
             tmp += "B=" + getString(R.string.Degrees, results[1]);
             courseBearing = NavigationTools.fixAngle(results[1]+90.0);
             para.courseBearing = courseBearing;
-            cd = getString(R.string.DF1, courseBearing);
+            cd = getString(R.string.DF0, courseBearing);
         }
 
         StartLine.setText(tmp);

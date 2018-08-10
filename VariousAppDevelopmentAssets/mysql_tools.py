@@ -1,27 +1,27 @@
 #!/usr/bin/env python
-'''
+__doc__ = """
 --------------------------------------------------------------------------------------------
 Offline Sailing Races - Wind Analysis
-This source code is available under the Python 2.7 | GPL license
+This source code is available under the Python 3.5 | GPL license
 (see: http://www.gnu.org/licenses/gpl.txt for more info).
 
 @author: Volker Petersen <volker.petersen01@gmail.com>
 --------------------------------------------------------------------------------------------
-'''
+"""
 __author__      = "Volker Petersen <volker.petersen01@gmail.com>"
 __version__     = "WindOscillations mysql_tools.py Revision: 1.1"
 __date__        = "Date: 2017/03/18"
 __copyright__   = "Copyright (c) 2017 Volker Petersen"
-__license__     = "Python 2.7 | GPL http://www.gnu.org/licenses/gpl.txt"
+__license__     = "Python 3.5 | GPL http://www.gnu.org/licenses/gpl.txt"
 
 try:
-    import os, sys, platform
-    import MySQLdb as mdb
+    import os, sys, platform, inspect
+    import pymysql
     import pandas.io.sql as psql
     import pandas as pd
 
 except ImportError as e:
-    print "Import error.",e, "\nAborting the program", __version__
+    print ("Import error. %s\nAborting the program" %(str(e), __version__))
     sys.exit()
 
 
@@ -63,10 +63,10 @@ class MYSQL(object):
 #==============================================================================================
     def __str__(self):
         """ generate a printout of the class initialization """
-        print "\nData columns in mysql table 'races':"
-        print self.races
-        print "\nData columns in mysql table 'wind':"
-        print self.wind
+        print ("\nData columns in mysql table 'races':")
+        print (self.races)
+        print ("\nData columns in mysql table 'wind':")
+        print (self.wind)
         return "\n"
         
 
@@ -88,18 +88,17 @@ class MYSQL(object):
         | @ret        - mysql connector or False if connection failed
         |------------------------------------------------------------------------------------------
         """
-        host = platform.node()
-        if "hostmonster.com" in host:
+        if "linux" in platform.system().lower():
             db_host = 'localhost'
         else:
-            db_host = 'www.southmetrochorale.org'
+            db_host = 'a2ss54.a2hosting.com'
         db_user = 'southme1_sudo'
         db_pass = 'Vesret7713'
         db_name = 'southme1_offline_wind_records'
         try:
-            self.con = mdb.connect(host=db_host, user=db_user, passwd=db_pass, db=db_name)
+            self.con = pymysql.connect(db_host, db_user, db_pass, db_name)
         except:
-            print "Failed to connect to DB", db_name, "on host", db_host
+            print ("Failed to connect to DB % on host %s" %(db_host, db_name))
             self.con = False
         return self.con
 
@@ -156,7 +155,7 @@ class MYSQL(object):
         try:
             con.close()
         except:
-            print "couldn't close mysql DB"
+            print ("couldn't close mysql DB")
 
         return df.sort_index(axis=0)   # return DF sorted with ascending index
 
@@ -167,21 +166,31 @@ class MYSQL(object):
 |------------------------------------------------------------------------------------------
 """
 if __name__ == "__main__":
-    print "\nClass definition only. Can't execute '%s' from command line." % __version__
- 
+    print (__doc__)
+
+    cwd = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+    
     mysql = MYSQL()
-    #print mysql
+    #print (mysql)
     
-    #races = mysql.fetch_races()
-    #print races
+    races = mysql.fetch_races()
+    print (races)
     
-    #wind = mysql.fetch_wind(1488866400)
-    #print wind.tail()
+    wind = mysql.fetch_wind(1491627600)  # 2017-04-08
+    filename = os.path.join(cwd, "wind_2017_04_08")
+    wind.to_pickle(filename)
+    #wind = pd.read_pickle(file_name)
+    print ("fetched %d records from date 2017-04-08" %wind['AWD'].count())
     
-    query = "SELECT %s, %s FROM wind WHERE %s='%s'" %(mysql.wind[0], mysql.wind[3], mysql.wind[7], 1488866400)
-    print query
-    wind = mysql.fetch_query(query, mysql.wind[0])
-    print wind.tail()
+    wind = mysql.fetch_wind(1494478800)  # 2017-05-11
+    filename = os.path.join(cwd, "wind_2017_05_11")
+    wind.to_pickle(filename)
+    print ("fetched %d records from date 2017-05-11" %wind['AWD'].count())
     
-    print '\nDone!\n'
+    #query = "SELECT %s, %s FROM wind WHERE %s='%s'" %(mysql.wind[0], mysql.wind[3], mysql.wind[7], 1488866400)
+    #print (query)
+    #wind = mysql.fetch_query(query, mysql.wind[0])
+    #print (wind.tail())
+    
+    print ('\nDone!\n')
 

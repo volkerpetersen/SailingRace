@@ -85,15 +85,15 @@ public class NavigationTools {
 
     /**
      * Method to convert a True North Compass reading into a Magnetic North compass reading
-     * Magnetic Bearing + Magnetic Declination = True Bearing
-     * MB = TB - MD
+     * Magnetic Bearing - Magnetic Declination = True Bearing
+     * MB = TB + MD
      *
      * @param trueAngle True North compass angle
      * @param declination Declination at the current location
      * @return Magnetic North compass angle 0 to 359.999
      */
     public static double TrueToMagnetic(double trueAngle, double declination) {
-        return Mod(Math.round(trueAngle-declination), THREESIXTY);
+        return Mod(Math.round(trueAngle+declination), THREESIXTY);
     }
 
     /**
@@ -506,7 +506,7 @@ public class NavigationTools {
         values[1] = AWD;  // TWD
         values[2] = AWS;  // TWS
 
-        if (SOG <= ZERO || AWS < ZERO) {
+        if (SOG <= ZERO || AWS <= ZERO) {
             return values;
         }
 

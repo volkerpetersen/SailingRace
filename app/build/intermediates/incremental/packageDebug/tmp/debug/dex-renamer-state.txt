@@ -1,0 +1,10 @@
+#Fri Jul 13 19:29:20 CDT 2018
+path.2=classes.dex
+path.1=classes.dex
+path.0=classes.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+base.2=D\:\\VolkerPetersen\\Dropbox\\ProgramCode\\Android\\SailingRace\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\12
+base.1=D\:\\VolkerPetersen\\Dropbox\\ProgramCode\\Android\\SailingRace\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\11
+base.0=D\:\\VolkerPetersen\\Dropbox\\ProgramCode\\Android\\SailingRace\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\13
